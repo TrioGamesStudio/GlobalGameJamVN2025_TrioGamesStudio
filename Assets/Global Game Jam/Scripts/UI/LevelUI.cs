@@ -33,6 +33,7 @@ public class LevelUI : MonoBehaviour
         DataManager.TotalDiamondCollected = 0;
         DataManager.currentMapLevelData = MapLevelData;
         TestLoadScene.Instance.Load(TestLoadScene.LEVEL_SCENE);
+        BackgroundMusic.Instance.StopMusic();
     }
     
     [Button]

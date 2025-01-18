@@ -8,31 +8,29 @@ public class StartGameUI : MonoBehaviour
     public Button StartGameBtn;
     public Button TutorialBtn;
     public Button OptionsBtn;
+    public Button ReturnBtn;
     
-    
-    public GameObject LevelSelect;
-    public GameObject optionsMenu;
-    public GameObject tutorialPanel;
-    
+    public CanvasGroup LevelSelect;
+    public CanvasGroup MainMenu;
+
     private void Awake()
     {
-        LevelSelect.SetActive(false);
-        optionsMenu.SetActive(false);
-        tutorialPanel.SetActive(false);
+        SetStateCanvas(LevelSelect, false);
+        SetStateCanvas(MainMenu, true);
     }
 
+    
     public void ToggleLevelSelect(bool isShow)
     {
-        LevelSelect.gameObject.SetActive(isShow);
+        SetStateCanvas(LevelSelect, isShow);
+        SetStateCanvas(MainMenu, !isShow);
+
     }
 
-    public void ToggleTutorial(bool isShow)
+    private void SetStateCanvas(CanvasGroup canvasGroup, bool isShow)
     {
-        optionsMenu.gameObject.SetActive(isShow);
-    }
-
-    public void ToggleOptions(bool isShow)
-    {
-        tutorialPanel.gameObject.SetActive(isShow);
+        canvasGroup.alpha = isShow ? 1 : 0;
+        canvasGroup.interactable = isShow;
+        canvasGroup.blocksRaycasts = isShow;
     }
 }

@@ -50,13 +50,8 @@ public class LevelUI : MonoBehaviour
             time = PlayerPrefs.GetInt(DataManager.TIME_COMPLETE + level);
         }
 
-        timerText.text = FormatTime(time);
+        timerText.text = ClockUI.FormatTime(time);
     }
     
-    string FormatTime(int totalSeconds)
-    {
-        int minutes = totalSeconds / 60; 
-        int seconds = totalSeconds % 60;
-        return string.Format("{0}'{1}s", minutes, seconds);
-    }
+    
 }

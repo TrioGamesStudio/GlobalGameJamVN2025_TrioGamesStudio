@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 6172184203624281738}
   m_Layer: 0
   m_Name: Bubble
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,8 +142,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68dd9cc86097e6049bd5f7f9b49089f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 1
   diamond: 0
+  explosion: {fileID: 1382976504884638, guid: 73d4454d73d3944f683042800d8e2074, type: 3}
+  isFinish: 0
 --- !u!114 &6705400367143269573
 MonoBehaviour:
   m_ObjectHideFlags: 0

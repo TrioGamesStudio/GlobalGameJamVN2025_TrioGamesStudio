@@ -42,7 +42,7 @@ public class Bird : MonoBehaviour, IDamage
         else
         {
             // Bird moving back in the opposite direction
-            transform.Translate(speed / 3 * Time.deltaTime * Vector3.left);
+            transform.Translate(speed / 2 * Time.deltaTime * Vector3.left);
         }
     }
 

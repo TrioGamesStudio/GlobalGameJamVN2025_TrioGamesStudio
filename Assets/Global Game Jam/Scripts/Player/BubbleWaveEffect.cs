@@ -54,6 +54,15 @@ public class BubbleWaveEffect : MonoBehaviour
         }
     }
 
+    public void DestroyBubbleChildren()
+    {
+        // Make each bubble in the trail follow the player in a wave-like motion
+        for (int i = 0; i < childBubbles.Count; i++)
+        {
+            Destroy(childBubbles[i]);
+        }
+    }
+
     //private void OnTriggerEnter(Collider other)
     //{
     //    // Check if the colliding object is another bubble

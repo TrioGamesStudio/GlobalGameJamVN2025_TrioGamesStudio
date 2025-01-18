@@ -13,15 +13,19 @@ public class BubbleController : MonoBehaviour
     public float floatFrequency = 1f; // Speed of the floating motion
     public float verticalSpeed = 3f; // Vertical speed when pressing W/S keys
     private Vector3 startPosition;
-
+    
     [Header("Scale Settings")]
     public float scaleSpeed = 3f; // Speed at which the bubble scales
     public float maxScale = 4f; // Maximum scale factor
-    public float minScale = 0.5f; // Minimum scale factor
+    public float minScale = 1f; // Minimum scale factor
     private Vector3 targetScale; // Target scale for smooth scaling
     private bool isScaleUp = false;
     private bool isScaleDown = false;
+    [Header("Speed Scale")] 
+    [SerializeField] private float speedScaleUp = .8f;
+    [SerializeField] private float speedScaleDown = 1.4f;
 
+    private Vector3 currentScale;
     private BubbleData bubbleData;
     private void Awake()
     {
@@ -50,12 +54,15 @@ public class BubbleController : MonoBehaviour
         targetScale = transform.localScale;
     }
 
+    public float offsetY;
     void Update()
     {
         if (bubbleData.isFinish) return;
         
         MoveBubble();
         ScaleBubble();
+        distance = transform.localScale.x * .5f + offsetY;
+        // Debug.DrawLine(transform.position,transform.position + Vector3.up * distance , Color.red);
     }
 
     private void AssignInputEvents()
@@ -74,8 +81,9 @@ public class BubbleController : MonoBehaviour
     private void MoveBubble()
     {
         // Move the bubble along the X-axis
-        transform.position += speed * Time.deltaTime * Vector3.right;
-
+        transform.position += (speed * speedScale) * Time.deltaTime * Vector3.right;
+        if (IsCellFloor() && input.y > 0.1f)
+            return;
         // Add vertical movement when pressing W/S keys
         if (Mathf.Abs(input.y) > 0.1f)
         {
@@ -95,31 +103,60 @@ public class BubbleController : MonoBehaviour
         }      
     }
 
+    public LayerMask cellingMask;
+    public float distance = .1f;
+    private bool IsCellFloor()
+    {
+        return Physics.Raycast(transform.position, Vector3.up, distance , cellingMask);
+    }
+
     private void ScaleBubble()
     {
         if (isScaleUp) ScaleUp();
         if (isScaleDown) ScaleDown();
         // Smoothly interpolate towards the target scale
         transform.localScale = Vector3.Lerp(transform.localScale, targetScale, Time.deltaTime * scaleSpeed);
+        currentScale = transform.localScale;
     }
 
+    private void LimitSpeedScale()
+    {
+        if (currentScale.x is > 1 and < 3)
+        {
+            speedScale = 1;
+        }
+    }
+
+    public float speedScale = 0;
     /// <summary>
     /// Scales the bubble up, increasing its size.
     /// </summary>
     public void ScaleUp()
     {
         // Increase the target scale while clamping to the maxScale
+        if (currentScale.x > 3f)
+        {
+            speedScale = speedScaleUp;
+        }
+
+        // LimitSpeedScale();
         targetScale += Vector3.one * 0.1f;
         targetScale = Vector3.Min(targetScale, Vector3.one * maxScale);
     }
-
+    
     /// <summary>
     /// Scales the bubble down, decreasing its size.
     /// </summary>
     public void ScaleDown()
     {
         // Decrease the target scale while clamping to the minScale
+        if (currentScale.x < 2f)
+        {
+            speedScale = speedScaleDown;
+        }
+        // LimitSpeedScale();
         targetScale -= Vector3.one * 0.1f;
         targetScale = Vector3.Max(targetScale, Vector3.one * minScale);
     }
+
 }

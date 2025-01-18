@@ -123,13 +123,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c381ba6d994a84b86a917c5a01db8185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.7
+  speed: 1
   floatAmplitude: 0.3
   floatFrequency: 1
   verticalSpeed: 3
   scaleSpeed: 10
   maxScale: 4
   minScale: 1
+  speedScaleUp: 0.8
+  speedScaleDown: 1.4
+  offsetY: 0.5
+  cellingMask:
+    serializedVersion: 2
+    m_Bits: 64
+  distance: 0.1
+  speedScale: 1
 --- !u!114 &7920179477445020419
 MonoBehaviour:
   m_ObjectHideFlags: 0

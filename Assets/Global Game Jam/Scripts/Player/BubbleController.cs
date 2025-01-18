@@ -89,9 +89,7 @@ public class BubbleController : MonoBehaviour
             float targetY = startPosition.y + Mathf.Sin(Time.time * floatFrequency) * floatAmplitude;
             float smoothedY = Mathf.Lerp(transform.position.y, targetY, Time.deltaTime * 5f); // Smoothly transition to floating
             transform.position = new Vector3(transform.position.x, smoothedY, transform.position.z);
-        }
-
-        
+        }      
     }
 
     private void ScaleBubble()

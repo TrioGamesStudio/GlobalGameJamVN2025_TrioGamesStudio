@@ -10,6 +10,7 @@ public class LevelUI : MonoBehaviour
     public Button playGameButton;
     public TextMeshProUGUI collectText;
     public TextMeshProUGUI timerText;
+    public TextMeshProUGUI levelText;
     public int total = 3;
     public int level = 1;
     private void Awake()
@@ -17,6 +18,7 @@ public class LevelUI : MonoBehaviour
         LoadTrophiesCollect();
         LoadTime();
         playGameButton.onClick.AddListener(OnPlayGame);
+        levelText.text = "Level " + level;
     }
 
     private void OnPlayGame()
@@ -24,6 +26,8 @@ public class LevelUI : MonoBehaviour
         DataManager.CurrentLevel = level;
         DataManager.TotalTime = 0;
         DataManager.TotalCollected = 0;
+        
+        TestLoadScene.Instance.Load(TestLoadScene.LEVEL_SCENE);
     }
     
     [Button]

@@ -410,7 +410,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: da5222aea4f7b6e479fe1c7653b88d0a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1786617deaeeebb4c959509a0a82df78, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -485,7 +485,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 82d524015a08a4fedad6f6e6d903253d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4e167ec3442b99e44886262cf633e47f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -506,6 +506,7 @@ GameObject:
   - component: {fileID: 1038588930496803997}
   - component: {fileID: 8401560491312597596}
   - component: {fileID: 6739434376014581114}
+  - component: {fileID: 6450882384980593827}
   m_Layer: 5
   m_Name: Level
   m_TagString: Untagged
@@ -601,6 +602,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6450882384980593827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135457217288829642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45d7012af9e141faa7612d3013a64b5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 0}
+  soundData: {fileID: 11400000, guid: 40fb44839378b62449e2bfffc2ef5a83, type: 2}
 --- !u!1 &2672975151984485374
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public class ResultGameUI : MonoBehaviour
     public float rotateZValue;
     public float rotateSpeed = 5;
     public float lerpingValue = 5;
+  
     private void Update()
     {
         rotateZValue += Time.deltaTime * rotateSpeed;

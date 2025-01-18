@@ -7,12 +7,15 @@ public class Init : MonoBehaviour
     [Header("Game Logic")]
     [SerializeField] BubbleData bubbleData;
 
+    [SerializeField] private BubbleWaveEffect bubbleWaveEffect;
     [SerializeField] private TimerManager timerManager;
     [Header("UI")]
     [SerializeField] UIHandler uIHandler;
     [SerializeField] private HealthManagerUI healthManagerUI;
     [SerializeField] private DiamondUI diamondUI;
     [SerializeField] private ClockUI ClockUI;
+    [SerializeField] private BubbleUI bubbleUI;
+    [SerializeField] private MapLevelData defaultLevelData;
     private void Awake() {
         bubbleData.UpdateHealthAction_UIhandler += uIHandler.OnHealthUpdate;
         bubbleData.UpdateDiamondAction_UIhandler += uIHandler.OnDiamondUpdate;
@@ -22,8 +25,14 @@ public class Init : MonoBehaviour
         
         // timer
         timerManager.OnTimerChanged += ClockUI.UpdateTimer;
-        
+        //
+        bubbleWaveEffect.OnChangedBubbleChild += bubbleUI.OnChangedBubble;
         InitHealthBar();
+        if (DataManager.currentMapLevelData == null)
+        {
+            DataManager.currentMapLevelData = defaultLevelData;
+        }
+        
     }
 
 
@@ -34,6 +43,9 @@ public class Init : MonoBehaviour
         
         //timer
         timerManager.OnTimerChanged -= ClockUI.UpdateTimer;
+        
+        bubbleWaveEffect.OnChangedBubbleChild -= bubbleUI.OnChangedBubble;
+
     }
 
 

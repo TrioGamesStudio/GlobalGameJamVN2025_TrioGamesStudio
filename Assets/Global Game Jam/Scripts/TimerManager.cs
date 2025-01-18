@@ -38,10 +38,14 @@ public class TimerManager : MonoBehaviour
     {
         while (canTimer)
         {
-            timer++;
-            OnTimerChanged?.Invoke(timer);
             yield return waitForOneSecond;
+            OnTimerChanged?.Invoke(timer);
+            timer++;
         }
     }
-    
+
+    public int GetTimer()
+    {
+        return timer;
+    }
 }

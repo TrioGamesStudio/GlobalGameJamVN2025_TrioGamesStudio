@@ -7,7 +7,7 @@ public class BubbleData : MonoBehaviour
     [SerializeField] int diamond = 0;
     public Action<int> UpdateHealthAction_UIhandler;
     public Action<int> UpdateDiamondAction_UIhandler;
-
+    
     //others
 
     private void Start() {

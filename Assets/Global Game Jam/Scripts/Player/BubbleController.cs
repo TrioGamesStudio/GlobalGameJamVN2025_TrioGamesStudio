@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class BubbleController : MonoBehaviour
@@ -22,6 +21,7 @@ public class BubbleController : MonoBehaviour
     private Vector3 targetScale; // Target scale for smooth scaling
     private bool isScaleUp = false;
     private bool isScaleDown = false;
+
 
     private void Awake()
     {
@@ -90,6 +90,8 @@ public class BubbleController : MonoBehaviour
             float smoothedY = Mathf.Lerp(transform.position.y, targetY, Time.deltaTime * 5f); // Smoothly transition to floating
             transform.position = new Vector3(transform.position.x, smoothedY, transform.position.z);
         }
+
+        
     }
 
     private void ScaleBubble()

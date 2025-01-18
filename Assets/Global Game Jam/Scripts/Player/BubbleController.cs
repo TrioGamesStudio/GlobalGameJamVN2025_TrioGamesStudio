@@ -6,6 +6,7 @@ public class BubbleController : MonoBehaviour
 {
     protected InputController inputController;
     private Vector2 input;
+    private Vector2 inputScale;
 
     [Header("Movement Settings")]
     public float speed = 2f; // Speed of movement along the X-axis
@@ -19,6 +20,8 @@ public class BubbleController : MonoBehaviour
     public float maxScale = 4f; // Maximum scale factor
     public float minScale = 0.5f; // Minimum scale factor
     private Vector3 targetScale; // Target scale for smooth scaling
+    private bool isScaleUp = false;
+    private bool isScaleDown = false;
 
     private void Awake()
     {
@@ -56,8 +59,10 @@ public class BubbleController : MonoBehaviour
     {
         inputController.Player.Move.performed += ctx => input = ctx.ReadValue<Vector2>();
         inputController.Player.Move.canceled += ctx => input = Vector2.zero;
-        inputController.Player.ScaleUp.performed  += _ => ScaleUp();
-        inputController.Player.ScaleDown.performed += _ => ScaleDown();
+        inputController.Player.ScaleUp.started += _ => { isScaleUp = true; };
+        inputController.Player.ScaleUp.canceled += _ => { isScaleUp = false; };
+        inputController.Player.ScaleDown.started += _ => { isScaleDown = true; };
+        inputController.Player.ScaleDown.canceled += _ => { isScaleDown = false; };
     }
 
     /// <summary>
@@ -89,6 +94,8 @@ public class BubbleController : MonoBehaviour
 
     private void ScaleBubble()
     {
+        if (isScaleUp) ScaleUp();
+        if (isScaleDown) ScaleDown();
         // Smoothly interpolate towards the target scale
         transform.localScale = Vector3.Lerp(transform.localScale, targetScale, Time.deltaTime * scaleSpeed);
     }

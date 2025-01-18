@@ -19,7 +19,7 @@ public class BackgroundMusic : MonoBehaviour
     public void StartMusic()
     {
         isPlaying = true;
-        LMotion.Create(0, 1, .5f).Bind(x =>
+        LMotion.Create(0, .5f, .5f).Bind(x =>
         {
             if (AudioSource == null) return;
             AudioSource.volume = x;
@@ -28,7 +28,7 @@ public class BackgroundMusic : MonoBehaviour
     
     public void StopMusic()
     {
-        LMotion.Create(1, 0, .5f).Bind(x =>
+        LMotion.Create(.5f, 0, .5f).Bind(x =>
         {
             if (AudioSource == null) return;
             AudioSource.volume = x;

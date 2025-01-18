@@ -30,11 +30,24 @@ public class ResultGameUI : MonoBehaviour
 
     public void Complete()
     {
-        resultText.text = "Complete";
+        resultText.text = "Complete Level "+DataManager.currentMapLevelData.level;
+        LoadGameResult();
     }
 
     public void Loose()
     {
         resultText.text = "Failed";
+        LoadGameResult();
+    }
+
+    public TextMeshProUGUI bubbleCollectText;
+    public TextMeshProUGUI diamondText;
+    public TextMeshProUGUI timeCompleteText;
+
+    private void LoadGameResult()
+    {
+        bubbleCollectText.text = $"{DataManager.TotalBubbleCollected} / {DataManager.currentMapLevelData.maxBubble}" ;
+        diamondText.text = $"{DataManager.TotalDiamondCollected} / {DataManager.currentMapLevelData.maxDiamond}" ;
+        timeCompleteText.text = ClockUI.FormatTime(DataManager.TotalTime);
     }
 }

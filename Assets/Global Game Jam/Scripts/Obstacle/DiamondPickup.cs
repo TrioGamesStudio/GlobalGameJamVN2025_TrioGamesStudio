@@ -1,8 +1,10 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class RewardPickup : MonoBehaviour, IReward
+public class DiamondPickup : MonoBehaviour, IReward
 {
-    int healtReward = 1;
+    [SerializeField] int diamondAmount = 1;
 
     private void Update() {
         Quaternion rotation = Quaternion.Euler(0, 90 * Time.deltaTime, 0);
@@ -14,14 +16,18 @@ public class RewardPickup : MonoBehaviour, IReward
             Destroy(this.gameObject, 0.1f);
         }
     }
-
+    public int OnTakeDiamond()
+    {
+        return diamondAmount;
+    }
     public int OnTakeReward()
     {
-        return healtReward;
+        return 0;
     }
-
     public MiniBubbleController OnGenerateMiniBubble()
     {
-        throw new System.NotImplementedException();
+        return null;
     }
+
+
 }

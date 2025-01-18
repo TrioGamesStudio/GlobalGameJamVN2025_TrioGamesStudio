@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class UIHandler : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI textMeshProUGUI;
+    [SerializeField] TextMeshProUGUI healthText;
+    [SerializeField] TextMeshProUGUI diamondText;
 
-    private void Awake() {
-        //OnHealthUpdate(3);
-    }
     
     public void OnHealthUpdate(int health)
     {
-        textMeshProUGUI.text = "Health " + health;
+        healthText.text = "Health " + health;
+    }
+
+    public void OnDiamondUpdate(int diamond) {
+        diamondText.text = "Diamond " + diamond;
     }
 }

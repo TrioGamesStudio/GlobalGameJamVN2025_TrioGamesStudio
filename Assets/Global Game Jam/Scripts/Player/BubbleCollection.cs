@@ -5,8 +5,6 @@ using UnityEngine;
 public class BubbleCollection : MonoBehaviour
 {
     BubbleData bubbleData;
-    List<MiniBubbleController> miniBubbleList = new List<MiniBubbleController>();
-    [SerializeField] Transform bubbleParent;
 
     private void Awake() {
         bubbleData = GetComponent<BubbleData>();
@@ -16,17 +14,13 @@ public class BubbleCollection : MonoBehaviour
         IReward rewardPickup = other.GetComponent<IReward>();
         IDamage stoneObstacle = other.GetComponent<IDamage>();
         
-        if(rewardPickup != null) {
-            bubbleData.OnTakeReward(rewardPickup.OnTakeReward());
 
-            /* if(rewardPickup as MiniBubbleObstacle) {
-                MiniBubbleController newMiniBubble = rewardPickup.OnGenerateMiniBubble();
-                if(miniBubbleList.Count < 1) {
-                    miniBubbleList.Add(newMiniBubble);
-                    MiniBubbleController newMini = Instantiate(miniBubbleList[0], transform.position, Quaternion.identity, bubbleParent);
-                    Debug.Log($"_____co chay vao day");
-                }
-            } */
+        if(rewardPickup != null) {
+            if(rewardPickup as HealthPickup)
+                bubbleData.OnTakeHealth(rewardPickup.OnTakeReward());
+
+            if(rewardPickup as DiamondPickup)
+                bubbleData.OnTakeDiamond(rewardPickup.OnTakeDiamond());
         }
 
         if(stoneObstacle != null) {
@@ -34,5 +28,15 @@ public class BubbleCollection : MonoBehaviour
         }
 
     }
+
+    // generate bubble
+    /* if(rewardPickup as MiniBubbleObstacle) {
+            MiniBubbleController newMiniBubble = rewardPickup.OnGenerateMiniBubble();
+            if(miniBubbleList.Count < 1) {
+                miniBubbleList.Add(newMiniBubble);
+                MiniBubbleController newMini = Instantiate(miniBubbleList[0], transform.position, Quaternion.identity, bubbleParent);
+                Debug.Log($"_____co chay vao day");
+            }
+        } */
 
 }

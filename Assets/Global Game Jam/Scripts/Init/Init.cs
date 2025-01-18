@@ -9,6 +9,7 @@ public class Init : MonoBehaviour
 
     private void Awake() {
         bubbleData.UpdateHealthAction_UIhandler += uIHandler.OnHealthUpdate;
+        bubbleData.UpdateDiamondAction_UIhandler += uIHandler.OnDiamondUpdate;
     }
 
 

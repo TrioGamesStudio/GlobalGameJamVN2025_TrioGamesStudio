@@ -15,7 +15,6 @@ public class LevelUI : MonoBehaviour
     public TextMeshProUGUI levelText;
     public int totalCollect = 3;
     public int totalBubbleCollect = 3;
-    public int level = 1;
     private void Awake()
     {
         totalCollect = MapLevelData.maxDiamond;
@@ -25,12 +24,11 @@ public class LevelUI : MonoBehaviour
         LoadTime();
         LoadTrophiesBubbleCollect();
         playGameButton.onClick.AddListener(OnPlayGame);
-        levelText.text = "Level " + level;
+        levelText.text = "Level " + MapLevelData.level;
     }
 
     private void OnPlayGame()
     {
-        DataManager.CurrentLevel = level;
         DataManager.TotalTime = 0;
         DataManager.TotalDiamondCollected = 0;
         DataManager.currentMapLevelData = MapLevelData;
@@ -43,7 +41,7 @@ public class LevelUI : MonoBehaviour
         int collected = 0;
         if (PlayerPrefs.HasKey(DataManager.TROPHIES_COLLECT))
         {
-            collected = PlayerPrefs.GetInt(DataManager.TROPHIES_COLLECT + level);
+            collected = PlayerPrefs.GetInt(DataManager.TROPHIES_COLLECT + MapLevelData.level);
         }
         collectText.text = $"{collected} / {totalCollect}";
     }
@@ -54,7 +52,7 @@ public class LevelUI : MonoBehaviour
         int time = 0;
         if (PlayerPrefs.HasKey(DataManager.TIME_COMPLETE))
         {
-            time = PlayerPrefs.GetInt(DataManager.TIME_COMPLETE + level);
+            time = PlayerPrefs.GetInt(DataManager.TIME_COMPLETE + MapLevelData.level);
         }
 
         timerText.text = ClockUI.FormatTime(time);
@@ -64,7 +62,7 @@ public class LevelUI : MonoBehaviour
         int collected = 0;
         if (PlayerPrefs.HasKey(DataManager.TROPHIES_BUBBLE_COLLECT))
         {
-            collected = PlayerPrefs.GetInt(DataManager.TROPHIES_BUBBLE_COLLECT + level);
+            collected = PlayerPrefs.GetInt(DataManager.TROPHIES_BUBBLE_COLLECT + MapLevelData.level);
         }
         collectBubbleText.text = $"{collected} / {totalBubbleCollect}";
     }

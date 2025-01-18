@@ -22,10 +22,11 @@ public class BubbleController : MonoBehaviour
     private bool isScaleUp = false;
     private bool isScaleDown = false;
 
-
+    private BubbleData bubbleData;
     private void Awake()
     {
         inputController = new InputController();
+        bubbleData = GetComponent<BubbleData>();
     }
 
     private void OnEnable()
@@ -51,6 +52,8 @@ public class BubbleController : MonoBehaviour
 
     void Update()
     {
+        if (bubbleData.isFinish) return;
+        
         MoveBubble();
         ScaleBubble();
     }

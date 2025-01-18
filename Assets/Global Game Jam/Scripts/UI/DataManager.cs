@@ -5,7 +5,6 @@ public static class DataManager
     public const string TROPHIES_COLLECT = "TROPHIES_COLLECT_";
     public const string TIME_COMPLETE = "TIME_COMPLETE_";
     public const string TROPHIES_BUBBLE_COLLECT = "TROPHIES_BUBBLE_COLLECT";
-    public static int CurrentLevel = 0;
     public static int TotalDiamondCollected = 0;
     public static int TotalBubbleCollected = 0;
     public static int TotalTime = 0;
@@ -19,7 +18,7 @@ public static class DataManager
 
     private static void SaveTimeComplete()
     {
-        string key = TIME_COMPLETE + CurrentLevel;
+        string key = TIME_COMPLETE + currentMapLevelData.level;
 
         if (PlayerPrefs.HasKey(key))
         {
@@ -38,7 +37,7 @@ public static class DataManager
 
     private static void SaveTrophies()
     {
-        string key = TROPHIES_COLLECT + CurrentLevel;
+        string key = TROPHIES_COLLECT + currentMapLevelData.level;
 
         if (PlayerPrefs.HasKey(key))
         {
@@ -56,7 +55,7 @@ public static class DataManager
     }
     private static void SaveBubbleTrophies()
     {
-        string key = TROPHIES_BUBBLE_COLLECT + CurrentLevel;
+        string key = TROPHIES_BUBBLE_COLLECT  + currentMapLevelData.level;
 
         if (PlayerPrefs.HasKey(key))
         {

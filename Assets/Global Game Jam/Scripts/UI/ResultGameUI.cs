@@ -30,7 +30,7 @@ public class ResultGameUI : MonoBehaviour
 
     public void Complete()
     {
-        resultText.text = "Complete Level"+DataManager.CurrentLevel;
+        resultText.text = "Complete Level "+DataManager.currentMapLevelData.level;
         LoadGameResult();
     }
 
@@ -48,5 +48,6 @@ public class ResultGameUI : MonoBehaviour
     {
         bubbleCollectText.text = $"{DataManager.TotalBubbleCollected} / {DataManager.currentMapLevelData.maxBubble}" ;
         diamondText.text = $"{DataManager.TotalDiamondCollected} / {DataManager.currentMapLevelData.maxDiamond}" ;
+        timeCompleteText.text = ClockUI.FormatTime(DataManager.TotalTime);
     }
 }

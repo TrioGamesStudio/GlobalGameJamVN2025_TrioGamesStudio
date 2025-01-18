@@ -66,6 +66,11 @@ public class BubbleWaveEffect : MonoBehaviour
         }
     }
 
+    public int GetBubbleCount()
+    {
+        return childBubbles.Count;
+    }
+    
     //private void OnTriggerEnter(Collider other)
     //{
     //    // Check if the colliding object is another bubble

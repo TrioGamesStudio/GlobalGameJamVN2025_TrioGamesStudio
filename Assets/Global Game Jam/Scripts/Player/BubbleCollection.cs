@@ -13,7 +13,7 @@ public class BubbleCollection : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         IReward rewardPickup = other.GetComponent<IReward>();
         IDamage stoneObstacle = other.GetComponent<IDamage>();
-        
+        FinishLine finishLine = other.GetComponentInParent<FinishLine>();
 
         if(rewardPickup != null) {
             if(rewardPickup as HealthPickup)
@@ -27,6 +27,11 @@ public class BubbleCollection : MonoBehaviour
             bubbleData.OnTakeDamage(stoneObstacle.OnTakeDamage());
         }
 
+        if (finishLine != null)
+        {
+            bubbleData.OnShowResultTable?.Invoke(true);
+            bubbleData.isFinish = true;
+        }
     }
 
     // generate bubble

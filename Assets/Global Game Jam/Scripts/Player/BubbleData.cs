@@ -8,7 +8,8 @@ public class BubbleData : MonoBehaviour
     public Action<int> UpdateHealthAction_UIhandler;
     public Action<int> UpdateDiamondAction_UIhandler;
     [SerializeField] GameObject explosion;
-
+    public Action<bool> OnShowResultTable;
+    public bool isFinish = false;
     private void Start() {
         health = 3;
         UpdateHealthAction_UIhandler?.Invoke(health);
@@ -28,10 +29,14 @@ public class BubbleData : MonoBehaviour
             Instantiate(explosion, transform.position, Quaternion.identity, transform);
             GetComponent<BubbleWaveEffect>().DestroyBubbleChildren();
             Destroy(gameObject, 0.5f);
+            OnShowResultTable?.Invoke(false);
         }
     }
 
-    public void OnTakeHealth(int reward) {
+    public void OnTakeHealth(int reward)
+    {
+        if (health >= 3)
+            return;
         health += reward;
 
         // run Action to update UI health
@@ -41,5 +46,10 @@ public class BubbleData : MonoBehaviour
     public void OnTakeDiamond(int diamondReward) {
         diamond += diamondReward;
         UpdateDiamondAction_UIhandler?.Invoke(diamond);
+    }
+
+    public int GetDiamond()
+    {
+        return diamond;
     }
 }

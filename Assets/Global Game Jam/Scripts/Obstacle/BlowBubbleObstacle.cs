@@ -13,7 +13,12 @@ public class BlowBubbleObstacle : MonoBehaviour
     private float nextSpawnTime;
 
     [SerializeField] Transform spawnMiniBubble;
-    
+    AudioSource audioSource;
+
+    private void Awake() {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     private void Start()
     {
         nextSpawnTime = Time.time + spawnInterval;
@@ -35,7 +40,7 @@ public class BlowBubbleObstacle : MonoBehaviour
         
         // Create new bubble instance
         MiniBubbleObstacle newBubble = Instantiate(miniBubbleObstacle, spawnMiniBubble.position, Quaternion.identity);
-        
+        audioSource.Play();
         // Generate random angle between minAngle and maxAngle
         float randomAngle = Random.Range(minAngle, maxAngle);
         

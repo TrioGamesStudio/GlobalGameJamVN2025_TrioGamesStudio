@@ -1599,6 +1599,9 @@ MonoBehaviour:
   floatAmplitude: 0.3
   floatFrequency: 1
   verticalSpeed: 3
+  scaleSpeed: 10
+  maxScale: 4
+  minScale: 1
 --- !u!1001 &300849656
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Global Game Jam/Scenes/Start.unity
+    guid: 514a93585d1d9964fb9c3b899d996c72
+  - enabled: 1
+    path: Assets/Global Game Jam/Scenes/Gameplay_1.unity
+    guid: 8866993b491ef4d4d93c66ceb135cb42
+  - enabled: 1
+    path: Assets/Global Game Jam/Scenes/Gameplay_2.unity
+    guid: 33be51a9aab06a6478b83f210cb426bc
   m_configObjects: {}

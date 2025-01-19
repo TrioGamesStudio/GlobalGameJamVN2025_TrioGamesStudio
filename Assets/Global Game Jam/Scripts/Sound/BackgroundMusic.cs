@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using LitMotion;
-using Mono.Cecil;
 using UnityEngine;
 
 public class BackgroundMusic : MonoBehaviour
@@ -9,6 +8,8 @@ public class BackgroundMusic : MonoBehaviour
     public static BackgroundMusic Instance;
     public AudioSource AudioSource;
     private bool isPlaying = false;
+    public float start = 0;
+    public float end = 0.5f;
     private void Awake()
     {
         AudioSource = GetComponent<AudioSource>();
@@ -19,7 +20,7 @@ public class BackgroundMusic : MonoBehaviour
     public void StartMusic()
     {
         isPlaying = true;
-        LMotion.Create(0, .5f, .5f).Bind(x =>
+        LMotion.Create(start, end, .5f).Bind(x =>
         {
             if (AudioSource == null) return;
             AudioSource.volume = x;
@@ -28,7 +29,7 @@ public class BackgroundMusic : MonoBehaviour
     
     public void StopMusic()
     {
-        LMotion.Create(.5f, 0, .5f).Bind(x =>
+        LMotion.Create(end, start, .5f).Bind(x =>
         {
             if (AudioSource == null) return;
             AudioSource.volume = x;

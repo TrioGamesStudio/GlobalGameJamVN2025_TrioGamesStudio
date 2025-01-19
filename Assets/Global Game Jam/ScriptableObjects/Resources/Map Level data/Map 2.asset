@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Map 2
   m_EditorClassIdentifier: 
   level: 2
-  maxBubble: 3
-  maxDiamond: 3
+  maxBubble: 8
+  maxDiamond: 4

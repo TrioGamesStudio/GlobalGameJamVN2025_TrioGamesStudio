@@ -12,14 +12,16 @@ public class StartGameUI : MonoBehaviour
     public Button ExitBtn;
     public CanvasGroup LevelSelect;
     public CanvasGroup MainMenu;
-
+    public CanvasGroup TutorialPanel;
     private void Awake()
     {
+        Application.targetFrameRate = 60;
         if (Application.platform == RuntimePlatform.WebGLPlayer)
         {
             ExitBtn.gameObject.SetActive(false);
         }        
         ExitBtn.onClick.AddListener(QuitGame);
+        SetStateCanvas(TutorialPanel, false);
         SetStateCanvas(LevelSelect, false);
         SetStateCanvas(MainMenu, true);
     }
@@ -34,7 +36,12 @@ public class StartGameUI : MonoBehaviour
     {
         SetStateCanvas(LevelSelect, isShow);
         SetStateCanvas(MainMenu, !isShow);
+    }
 
+    public void ToggleTutorial(bool isShow)
+    {
+        SetStateCanvas(TutorialPanel, isShow);
+        SetStateCanvas(MainMenu, !isShow);
     }
 
     private void SetStateCanvas(CanvasGroup canvasGroup, bool isShow)

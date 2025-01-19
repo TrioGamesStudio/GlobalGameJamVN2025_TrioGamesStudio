@@ -67,7 +67,10 @@ public class Init : MonoBehaviour
         DataManager.Save();
         
         BackgroundMusic.Instance.StopMusic();
-        
+
+        if (state)
+            DataManager.SaveTimeComplete();
+
     }
 
     private void InitHealthBar()

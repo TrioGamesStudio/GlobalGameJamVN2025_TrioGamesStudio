@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class TestLoadScene : MonoBehaviour
 {
     public static TestLoadScene Instance;
-    public static string LEVEL_SCENE = "Gameplay";
+    public static string LEVEL_SCENE = "Gameplay_";
     public static string MENU_SCENE = "Start";
     private void Awake()
     {

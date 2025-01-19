@@ -41,7 +41,7 @@ public class GameplayUI : MonoBehaviour
     [Button]
     private void ReplayGame()
     {
-        TestLoadScene.Instance.Load(TestLoadScene.LEVEL_SCENE);
+        TestLoadScene.Instance.Load(TestLoadScene.LEVEL_SCENE+DataManager.currentMapLevelData.level);
     }
     
     [Button]

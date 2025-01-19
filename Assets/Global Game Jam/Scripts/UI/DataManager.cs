@@ -2,21 +2,22 @@ using UnityEngine;
 
 public static class DataManager
 {
-    public const string TROPHIES_COLLECT = "TROPHIES_COLLECT_";
-    public const string TIME_COMPLETE = "TIME_COMPLETE_";
-    public const string TROPHIES_BUBBLE_COLLECT = "TROPHIES_BUBBLE_COLLECT";
+    public static string TROPHIES_COLLECT = "TROPHIES_COLLECT_";
+    public static string TIME_COMPLETE = "TIME_COMPLETE_";
+    public static string TROPHIES_BUBBLE_COLLECT => "TROPHIES_BUBBLE_COLLECT_";
     public static int TotalDiamondCollected = 0;
     public static int TotalBubbleCollected = 0;
     public static int TotalTime = 0;
     public static MapLevelData currentMapLevelData;
+
     public static void Save()
     {
         SaveTrophies();
-        SaveTimeComplete();
+        // SaveTimeComplete();
         SaveBubbleTrophies();
     }
 
-    private static void SaveTimeComplete()
+    public static void SaveTimeComplete()
     {
         string key = TIME_COMPLETE + currentMapLevelData.level;
 
@@ -31,7 +32,7 @@ public static class DataManager
         }
         else
         {
-            PlayerPrefs.SetInt(key,TotalTime);
+            PlayerPrefs.SetInt(key, TotalTime);
         }
     }
 
@@ -50,12 +51,13 @@ public static class DataManager
         }
         else
         {
-            PlayerPrefs.SetInt(key,TotalDiamondCollected);
+            PlayerPrefs.SetInt(key, TotalDiamondCollected);
         }
     }
+
     private static void SaveBubbleTrophies()
     {
-        string key = TROPHIES_BUBBLE_COLLECT  + currentMapLevelData.level;
+        string key = TROPHIES_BUBBLE_COLLECT + currentMapLevelData.level;
 
         if (PlayerPrefs.HasKey(key))
         {
@@ -68,7 +70,7 @@ public static class DataManager
         }
         else
         {
-            PlayerPrefs.SetInt(key,TotalBubbleCollected);
+            PlayerPrefs.SetInt(key, TotalBubbleCollected);
         }
     }
 }

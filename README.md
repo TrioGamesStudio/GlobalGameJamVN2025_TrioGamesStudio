@@ -3,6 +3,20 @@
 ## Game Overview
 Bubble Odyssey is a 2D platformer that challenges players to navigate a bubble through various obstacles, testing precision, strategy, and control.
 
+## Play Now
+### Online Platforms
+* 🎮 Itch.io: https://triogames.itch.io/bubble-runner
+
+
+## Illustrating Images
+
+### Game Screenshots
+![Title Scene](/Images/TitleScene.png)
+*Title Screen*
+
+![Play Scene](/Images/PlayScene.png)
+*Play Screen*
+
 ## Core Features
 
 ### Gameplay Mechanics
